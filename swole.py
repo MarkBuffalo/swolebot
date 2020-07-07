@@ -96,7 +96,7 @@ class SwoleBot:
             if not found_something:
                 print(f"{self.d}[OUT OF STOCK]{self.b} Couldn't find anything for{self.c} {search_string}{self.b}")
                 found_something = False
-        s.enter(10, 1, self.search_rogue_fitness, (scheduler,))
+        s.enter(self.interval, 1, self.search_rogue_fitness, (scheduler,))
 
     # This is how we'll open the URLs... but we don't want to spam people...
     # if we opened the page already, don't open it again.
