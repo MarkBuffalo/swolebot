@@ -4,7 +4,7 @@
 
 Due to Covid-19, home exercise equipment is at an all-time low. Imagine if there was a way to get notified when things are back in stock automatically, without relying on Rogue Fitness' unrealible email notification?
 
-There's a simple way to do this as scale using very limited resources and reducing the burden on Rogue Fitness' servers. Every 5 minutes, this script will poll several pages and download only the HTML for a single page. After which, it will process this file and alert you AND open a web browser window for you. 
+There's a simple way to do this at scale using very limited resources and while reducing the burden on Rogue Fitness' web servers. Every 5 minutes, this script will poll several pages and download only the HTML for a single page. After which, it will process this file and alert you AND open a web browser window for you. 
 
 # Requirements
 
