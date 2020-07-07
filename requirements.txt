@@ -1,4 +1,4 @@
-requests==2.22.0
-colorama==0.4.1
-beautifulsoup4==4.9.1
-playsound==1.2.2
+requests
+colorama
+beautifulsoup4
+playsound
