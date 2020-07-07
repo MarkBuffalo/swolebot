@@ -1,3 +1,5 @@
+![Swolebot Terminal Output](https://i.imgur.com/NaJvLMa.png)
+
 # What is Swolebot?
 
 Due to Covid-19, home exercise equipment is at an all-time low. Imagine if there was a way to get notified when things are back in stock automatically, without relying on Rogue Fitness' unrealible email notification?
