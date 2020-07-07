@@ -6,6 +6,7 @@ import time
 import webbrowser
 import os.path
 from colorama import Fore
+from playsound import playsound
 
 
 class SwoleBot:
@@ -36,6 +37,7 @@ class SwoleBot:
         self.interval = 300
         self.opened_urls = []
         self.products_to_monitor = self.get_monitored_products_from_file()
+        self.sound_file = "wake_up.wav"
 
     def get_monitored_products_from_file(self):
         print(self.banner)
@@ -64,7 +66,7 @@ class SwoleBot:
                 keyword = input(f"Enter keywords to search for (enter {self.a}S{self.b} to stop): ")
                 if keyword:
                     if not keyword == "S" and not keyword == "S".lower():
-                        keyword_list.append(f"{keyword.strip()}\n")
+                        keyword_list.append(f"{keyword.strip()}")
                     else:
                         stop_this_shit = True
 
@@ -94,7 +96,7 @@ class SwoleBot:
             if not found_something:
                 print(f"{self.d}[OUT OF STOCK]{self.b} Couldn't find anything for{self.c} {search_string}{self.b}")
                 found_something = False
-        s.enter(self.interval, 1, self.search_rogue_fitness, (scheduler,))
+        s.enter(10, 1, self.search_rogue_fitness, (scheduler,))
 
     # This is how we'll open the URLs... but we don't want to spam people...
     # if we opened the page already, don't open it again.
@@ -108,6 +110,7 @@ class SwoleBot:
 
         # The Page URL was not found within the found_site list. Yeah, we can open it without being spammy.
         if not found_site:
+            playsound(self.sound_file)
             webbrowser.open(url)
 
         # Let's keep it distinct so we don't use a crap-load of memory.
@@ -145,5 +148,5 @@ class SwoleBot:
 if __name__ == "__main__":
     sb = SwoleBot()
     s = sched.scheduler(time.time, time.sleep)
-    s.enter(300, 1, sb.search_rogue_fitness, (s,))
+    s.enter(1, 1, sb.search_rogue_fitness, (s,))
     s.run()
