@@ -66,7 +66,7 @@ class SwoleBot:
                 keyword = input(f"Enter keywords to search for (enter {self.a}S{self.b} to stop): ")
                 if keyword:
                     if not keyword == "S" and not keyword == "S".lower():
-                        keyword_list.append(f"{keyword.strip()}")
+                        keyword_list.append(f"{keyword.strip()}\n")
                     else:
                         stop_this_shit = True
 
