@@ -14,7 +14,8 @@ pip3 install -r requirements.txt
 
 # Usage
 
-```⚡ python3 swole.py
+```
+⚡ python3 swole.py
 
 Welcome to Swolebot. Let's park in front of Rogue Fitness until our stuff is in stock!
 
