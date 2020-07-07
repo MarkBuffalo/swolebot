@@ -66,14 +66,14 @@ class SwoleBot:
                 keyword = input(f"Enter keywords to search for (enter {self.a}S{self.b} to stop): ")
                 if keyword:
                     if not keyword == "S" and not keyword == "S".lower():
-                        keyword_list.append(f"{keyword.strip()}\n")
+                        keyword_list.append(f"{keyword.strip()}")
                     else:
                         stop_this_shit = True
 
             if len(keyword_list) > 0:
                 with open(self.keyword_file, "a") as w:
                     for keyword in keyword_list:
-                        w.write(keyword)
+                        w.write(f"{keyword}\n")
                 # Now let's just return the list so we can use it later.
                 return keyword_list
             else:
