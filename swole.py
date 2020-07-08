@@ -34,7 +34,7 @@ class SwoleBot:
             "Squat Stands": "rogue-rigs-racks/squat-stands",
             "Conditioning": "conditioning",
         }
-        self.interval = 300
+        self.interval = 30
         self.opened_urls = []
         self.products_to_monitor = self.get_monitored_products_from_file()
         self.sound_file = "wake_up.wav"
@@ -82,20 +82,27 @@ class SwoleBot:
 
     def search_rogue_fitness(self, scheduler):
         found_something = False
-        products = self.get_all_products()
-        for search_string in self.products_to_monitor:
-            for i in products:
-                product = i[0]
-                url = i[1]
-                if search_string.lower() in product.lower():
-                    print(f"{self.a}[IN STOCK]{self.b} {product} - {self.e}{url}{self.b}")
-                    self.open_website_url(url)
-                    self.opened_urls.append(url)
+        products = []
+        try:
+            products = self.get_all_products()
+        except Exception:
+            pass
 
-                    found_something = True
-            if not found_something:
-                print(f"{self.d}[OUT OF STOCK]{self.b} Couldn't find anything for{self.c} {search_string}{self.b}")
-                found_something = False
+        if len(products) > 0:
+            for search_string in self.products_to_monitor:
+                for i in products:
+                    product = i[0]
+                    url = i[1]
+                    if search_string.lower() in product.lower():
+                        print(f"{self.a}[IN STOCK]{self.b} {product} - {self.e}{url}{self.b}")
+                        self.open_website_url(url)
+                        self.opened_urls.append(url)
+
+                        found_something = True
+                if not found_something:
+                    print(f"{self.d}[OUT OF STOCK]{self.b} Couldn't find anything for{self.c} {search_string}{self.b}")
+                    found_something = False
+            products = []
         s.enter(self.interval, 1, self.search_rogue_fitness, (scheduler,))
 
     # This is how we'll open the URLs... but we don't want to spam people...
