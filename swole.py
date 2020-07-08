@@ -34,7 +34,7 @@ class SwoleBot:
             "Squat Stands": "rogue-rigs-racks/squat-stands",
             "Conditioning": "conditioning",
         }
-        self.interval = 30
+        self.interval = 300
         self.opened_urls = []
         self.products_to_monitor = self.get_monitored_products_from_file()
         self.sound_file = "wake_up.wav"
