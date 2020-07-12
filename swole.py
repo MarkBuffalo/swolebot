@@ -6,7 +6,7 @@ import time
 import webbrowser
 import os.path
 from colorama import Fore
-from playsound import playsound
+import simpleaudio as sa
 
 
 class SwoleBot:
@@ -26,15 +26,15 @@ class SwoleBot:
         self.base_url = "https://www.roguefitness.com/"
         self.end_url = "?is_salable[0]=1&limit=160"
         self.categories_to_monitor = {
-            "Barbells": "weightlifting-bars-plates/barbells",
+            #"Barbells": "weightlifting-bars-plates/barbells",
             "Plates": "weightlifting-bars-plates/bumpers",
-            "Rigs": "rogue-rigs-racks/squat-stands",
-            "Wallmounts": "rogue-rigs-racks/wallmounts",
-            "Power Racks": "rogue-rigs-racks/power-racks",
-            "Squat Stands": "rogue-rigs-racks/squat-stands",
+            #"Rigs": "rogue-rigs-racks/squat-stands",
+            #"Wallmounts": "rogue-rigs-racks/wallmounts",
+            #"Power Racks": "rogue-rigs-racks/power-racks",
+            #"Squat Stands": "rogue-rigs-racks/squat-stands",
             "Conditioning": "conditioning",
         }
-        self.interval = 300
+        self.interval = 60
         self.opened_urls = []
         self.products_to_monitor = self.get_monitored_products_from_file()
         self.sound_file = "wake_up.wav"
@@ -117,8 +117,16 @@ class SwoleBot:
 
         # The Page URL was not found within the found_site list. Yeah, we can open it without being spammy.
         if not found_site:
-            playsound(self.sound_file)
-            webbrowser.open(url)
+            try:
+                wave_obj = sa.WaveObject.from_wave_file(self.sound_file)
+                play_obj = wave_obj.play()
+            except Exception:
+                print("Couldn't play a sound. This script hates you. Contact author.")
+
+            try:
+                webbrowser.open(url)
+            except Exception:
+                print("Couldn't open a web browser. This script hates you. Contact author.")
 
         # Let's keep it distinct so we don't use a crap-load of memory.
         else:

@@ -1,4 +1,4 @@
-requests
-colorama
-beautifulsoup4
-playsound
+requests==2.22.0
+simpleaudio==1.0.4
+colorama==0.4.1
+beautifulsoup4==4.9.1
