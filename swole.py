@@ -26,15 +26,15 @@ class SwoleBot:
         self.base_url = "https://www.roguefitness.com/"
         self.end_url = "?is_salable[0]=1&limit=160"
         self.categories_to_monitor = {
-            #"Barbells": "weightlifting-bars-plates/barbells",
+            "Barbells": "weightlifting-bars-plates/barbells",
             "Plates": "weightlifting-bars-plates/bumpers",
-            #"Rigs": "rogue-rigs-racks/squat-stands",
-            #"Wallmounts": "rogue-rigs-racks/wallmounts",
-            #"Power Racks": "rogue-rigs-racks/power-racks",
-            #"Squat Stands": "rogue-rigs-racks/squat-stands",
+            "Rigs": "rogue-rigs-racks/squat-stands",
+            "Wallmounts": "rogue-rigs-racks/wallmounts",
+            "Power Racks": "rogue-rigs-racks/power-racks",
+            "Squat Stands": "rogue-rigs-racks/squat-stands",
             "Conditioning": "conditioning",
         }
-        self.interval = 60
+        self.interval = 10
         self.opened_urls = []
         self.products_to_monitor = self.get_monitored_products_from_file()
         self.sound_file = "wake_up.wav"
